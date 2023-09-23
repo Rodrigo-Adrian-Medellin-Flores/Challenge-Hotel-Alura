@@ -1,0 +1,28 @@
+CREATE DATABASE hotel_alura;
+
+USE hotel_alura;
+
+CREATE TABLE huespedes(
+ID INT AUTO_INCREMENT NOT NULL,
+Nombre VARCHAR(100) NOT NULL,
+Apellido VARCHAR(100) NOT NULL,
+Fecha_Nacimiento DATE NOT NULL,
+Nacionalidad VARCHAR(100) NOT NULL,
+Telefono BIGINT NOT NULL,
+Reserva_ID INT NOT NULL,
+
+PRIMARY KEY(ID)
+);
+
+CREATE TABLE reservas(
+ID INT AUTO_INCREMENT NOT NULL,
+Fecha_Entrada DATE NOT NULL,
+Fecha_Salida DATE NOT NULL,
+Valor DECIMAL(19,2),
+Forma_de_Pago VARCHAR (50),
+
+PRIMARY KEY(ID)
+);
+
+ALTER TABLE huespedes
+ADD FOREIGN KEY(Reserva_ID) REFERENCES reservas(ID);
